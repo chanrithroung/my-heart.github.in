@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+
+      body > img {
+        height: 400px
+      }
+      #div1 {
+        position: absolute;
+        top: 30%;
+        left: 32%;
+        height: 150px;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #div1 img {
+        height: 80%;
+        object-fit: cover;
+      }
+
+      #drag1 img {
+        width: 200px;
+      }
+
+      .container {
+        position: relative;
+        height: 400px;
+        width: 400px;
+        background-color: aqua;
+      }
+
+      .container > .heart {
+        height: 100%;
+      }
+
+      
+    </style>
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        let data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <img class="heart" src="https://media.istockphoto.com/id/1903985199/vector/heart-flat-icon.jpg?s=612x612&w=0&k=20&c=FOAQ1kofne38dLzm6C6vBE39nY9fynVBpQb7UcDW7gk=" alt="">
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+      </div>
+    </div>
+    
+    
+    <br />
+    <img
+      id="drag1"
+      draggable="true"
+      ondragstart="drag(event)"
+      src="photo_2024-07-21 00.15.46.jpeg"
+      alt="Draggable Your your lover"
+    />
+  </body>
+</html>
